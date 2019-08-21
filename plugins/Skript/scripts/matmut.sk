@@ -1,3 +1,12 @@
+#
+# Employees:
+# - daffit
+# - dzikoysk
+# - bopke
+#
+# {{ u can join us D: }}
+#
+
 function matgen(n: number) :: objects: 
     # send "matgen started, _n = %{_n}%" to console
 
