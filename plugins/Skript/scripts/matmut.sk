@@ -13,6 +13,7 @@ function matgen(n: number) :: objects:
             set {_a::%{_index_1}%::%{_index_2}%} to (({_tmp} * 1.0) * ({_index_1} - {_index_2})) * ({_index_1} + {_index_2})
             send "_val = %{_a::%{_index_1}%::%{_index_2}%} * 1.0%" to console
 
+    # how the duck we can return this variable 
     send "%{_a::*}%" to console
     return {_a::*}
 
@@ -53,10 +54,8 @@ command /matmul:
         set {_n} to 2
 
         set {_a::*} to matgen({_n})
-        # send "%{_a::*}% gen done" to console
-
+        # waiting for result
         set {_b::*} to matgen({_n})
-        # send "_b gen done" to console
         
         set {_x::*} to matmul({_a::*}, {_b::*})
         set {_pos} to ({_n} / 2)
