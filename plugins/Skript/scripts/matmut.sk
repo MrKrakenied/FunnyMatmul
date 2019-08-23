@@ -12,7 +12,7 @@
 function matgen(n: number) :: vectors: 
     # send "matgen started, _n = %{_n}%" to console
 
-    set {_tmp} to 1.0 / {_n} / {_n}
+    set {_tmp} to (1.0 / {_n}) / {_n}
     # send "_tmp = %{_tmp}%" to console
 
     loop {_n} times:
@@ -21,8 +21,8 @@ function matgen(n: number) :: vectors:
             set {_index_2} to (loop-number-2) - 1.0
             # send "index 1, index 2 = %{_index_1}%, %{_index_2}%" to console
             
-            set {_a::%{_index_1}%n%{_index_2}%} to (({_tmp} * 1.0) * ({_index_1} - {_index_2})) * ({_index_1} + {_index_2})
-            # send "_val = %{_a::%{_index_1}%::%{_index_2}%} * 1.0%" to console
+            set {_a::%{_index_1}%::%{_index_2}%} to (({_tmp} * 1.0) * ({_index_1} - {_index_2})) * ({_index_1} + {_index_2})
+            send "_val = %{_a::%{_index_1}%::%{_index_2}%} * 1.0%" to console
     
     # how the duck we can return this variable 
     send "%{_a::*}%" to console
@@ -45,7 +45,7 @@ function matmul(a: objects, b: objects) :: objects:
 
             set {_c::%{_index_2}%::%{_index_1}%} to {_b::%{_index_1}%::%{_index_2}%}
             send "_val = %{_c::%{_index_2}%::%{_index_1}%} * 1.0%" to console
-            
+
     loop {_m} times:
         loop {_p} times:
             set {_s} to 0.0
@@ -67,7 +67,7 @@ command /matmul:
         set {_a::*} to matgen({_n})
         # waiting for result
         set {_b::*} to matgen({_n})
-        
+
         set {_x::*} to matmul({_a::*}, {_b::*})
         set {_pos} to ({_n} / 2)
 
